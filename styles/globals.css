@@ -1,0 +1,36 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.cardContainer .card-body{
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.cardContainer:hover .card-body{
+  transition: all .3s ease-in-out;
+  background-color: #eee;
+}
+
+.modal{
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.notAvailable{
+  cursor: not-allowed;
+}
