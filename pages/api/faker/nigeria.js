@@ -117,7 +117,7 @@ export default (req, res) => {
         course: "Online Course",
         index,
         imageUri:
-          "https::/faker-ng.herokuapp.com/images/nigeria.jpeg",
+          "https://faker-ng.herokuapp.com/images/nigeria.jpeg",
       });
       if (dataArray.length == end) {
         return res.status(200).json(dataArray);
