@@ -46,7 +46,7 @@ export default function Home() {
                 src="/images/undraw_server_status_5pbv.svg"
               />
 
-              <h3 className="text-bg">01</h3>
+              <h3 className="text-bg">v - 1.0.0</h3>
             </div>
           </div>
         </div>

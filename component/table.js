@@ -38,6 +38,7 @@ export default function Table({ data }) {
               <th scope="col">#</th>
               <th scope="col">Fistname</th>
               <th scope="col">Lastname</th>
+              <th scope="col">Gender</th>
               <th scope="col">Location</th>
             </tr>
           </thead>
@@ -49,6 +50,7 @@ export default function Table({ data }) {
                   <th scope="row">{result.index}</th>
                   <td>{result.firstName}</td>
                   <td>{result.lastName}</td>
+                  <td>{result.gender}</td>
                   <td>{result.location}</td>
                 </tr>
               ))}
