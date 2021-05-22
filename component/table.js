@@ -31,7 +31,7 @@ export default function Table({ data }) {
 
   return (
     <>
-      <div>
+      <div className="table-responsive">
         <table className=" table table-dark table-striped">
           <thead>
             <tr>

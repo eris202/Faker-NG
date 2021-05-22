@@ -13,32 +13,35 @@ const yorubaState = require("./yoruba/state");
 const sex = require("./gender");
 
 export default (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
 
-  if (req.method == "OPTIONS") {
-    res.setHeader("Access-Control-Allow-Credentials", "'true");
-    res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Origin, x-access-token, x-api-token, X-Requested-With, Content-Type, Accept"
-    );
-    res.setHeader("Access-Control-Max-Age", "3800");
+  
+  // res.setHeader("Access-Control-Allow-Origin", "*");
 
-    res.status(200).end();
-  }
+  // if (req.method == "OPTIONS") {
+    // res.setHeader("Access-Control-Allow-Credentials", "'true");
+    // res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+    // res.setHeader(
+      // "Access-Control-Allow-Headers",
+      // "Origin, x-access-token, x-api-token, X-Requested-With, Content-Type, Accept"
+    // );
+    // res.setHeader("Access-Control-Max-Age", "3800");
+// 
+    // res.status(201).end();
+  // }
+  
 
-  let end = req.query.num;
+  let end = req.query.limit;
+  console.log(end)
   let gender;
   var index = 0;
   if (end > 1000) {
-    res.status(501).json({
+    return res.status(501).json({
       message: "The maximum number of data you can generate is 1000",
     });
-    return;
   }
 
-  if (!req.query.num) {
-    res.status(501).json({ message: "num not provided" });
+  if (!req.query.limit) {
+    return res.status(401).json({ message: " Please provide a limit" });
   }
 
   try {
@@ -117,8 +120,7 @@ export default (req, res) => {
           "https://api.backendless.com/2F26DFBF-433C-51CC-FF56-830CEA93BF00/473FB5A9-D20E-8D3E-FF01-E93D9D780A00/files/CountryFlags/nga.svg",
       });
       if (dataArray.length == end) {
-        res.status(200).json(dataArray);
-        return false;
+        return res.status(200).json(dataArray);
       }
       equation();
     }

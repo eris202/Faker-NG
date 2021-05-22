@@ -27,7 +27,7 @@ export default function ModalComponent(props) {
 
   const generateData = () => {
     const getData = axios.post(
-      `/api/faker/nigeria?num=${numberOfData.current.value}`
+      `/api/faker/nigeria?limit=${numberOfData.current.value}`
     );
     getData
       .then((res) => {
@@ -94,7 +94,7 @@ export default function ModalComponent(props) {
         <Container>
           {levelOne && (
             <Row>
-              <Col>
+              <div className="col-md-6">
                 <div className="cardContainer">
                   <Card className="w-100">
                     <Card.Body>
@@ -113,8 +113,8 @@ export default function ModalComponent(props) {
                     </Card.Body>
                   </Card>
                 </div>
-              </Col>
-              <Col>
+              </div>
+              <div className="col-md-6 mt-3">
                 <div className="cardContainer">
                   <Card className="w-100">
                     <Card.Body>
@@ -135,7 +135,7 @@ export default function ModalComponent(props) {
                     </Card.Body>
                   </Card>
                 </div>
-              </Col>
+              </div>
             </Row>
           )}
           {JSON && (
@@ -148,7 +148,7 @@ export default function ModalComponent(props) {
                 by passing a query to the end point. e.g
                 <code>
                   {" "}
-                  https://faker-ng.herokuapp.com/api/faker/nigeria?num=7
+                  https://faker-ng.herokuapp.com/api/faker/nigeria?limit=7
                 </code>{" "}
                 . This will generate a 7 nigerian data in a JSON format.
                 Meanwhile, in the next version of this application, we'll
@@ -210,7 +210,7 @@ export default function ModalComponent(props) {
           <a
             className="btn btn-success"
             target="_blank"
-            href="https://faker-ng.herokuapp.com/api/faker/nigeria?num=7"
+            href="https://faker-ng.herokuapp.com/api/faker/nigeria?limit=7"
           >
             Try it
           </a>

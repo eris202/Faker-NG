@@ -19,6 +19,18 @@ body {
 h1 {
   font-size: 6vw !important;
 }
+.card-text{
+  margin-bottom: 60px;
+}
+.card{
+  height: 100%;
+  position: relative;
+}
+.card button{
+  position: absolute;
+  bottom: 20px;
+
+}
 
 
 @media(max-width: 767px){
@@ -27,6 +39,15 @@ h1 {
   }
  .summary{
    font-size: 16px;
+ }
+ .card{
+   /* font-size: 14px !important; */
+ }
+ .card button{
+   position: relative;
+ }
+ .modal-title{
+font-size: 16px !important;
  }
  body{
   text-align: center;
