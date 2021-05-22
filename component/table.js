@@ -8,7 +8,7 @@ export default function Table({ data }) {
   const [dataToUse, setData] = React.useState(data);
 
   React.useEffect(() => {
-    if (data.length) {
+    if (data && data.length) {
       setData(data.slice(start, end));
     }
   }, [start, end, data]);
@@ -58,10 +58,10 @@ export default function Table({ data }) {
 
       <div>
         <button className="btn" onClick={handlePrevious}>
-          Next
+          Previous
         </button>
         <button className="btn" onClick={handleNext}>
-          Previous
+          Next
         </button>
       </div>
     </>

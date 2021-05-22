@@ -1,36 +1,34 @@
-html,
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Roboto Slab", serif;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 56, 121, 0.8827906162464986) 62%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.text-bg {
+  color: #fff;
+}
+.summary{
+  font-size: 20px;
+}
+h1 {
+  font-size: 6vw !important;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
-* {
-  box-sizing: border-box;
-}
-
-.cardContainer .card-body{
-  background: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-
-}
-
-.cardContainer:hover .card-body{
-  transition: all .3s ease-in-out;
-  background-color: #eee;
-}
-
-.modal{
-  max-height: 90vh;
-  overflow-y: auto;
-}
-.notAvailable{
-  cursor: not-allowed;
+@media(max-width: 767px){
+  h1{
+    font-size: 30px !important;
+  }
+ .summary{
+   font-size: 16px;
+ }
+ body{
+  text-align: center;
+ }
 }

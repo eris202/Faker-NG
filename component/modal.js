@@ -18,7 +18,7 @@ import gender from "../pages/api/faker/gender";
 export default function ModalComponent(props) {
   const [levelOne, setLevelOne] = useState(true);
   const [list, setList] = useState(false);
-  const [json, setJson] = useState(false);
+  const [JSON, setJSON] = useState(false);
   const [showTable, setShowTable] = useState(false);
   const [data, setData] = useState([]);
 
@@ -43,9 +43,8 @@ export default function ModalComponent(props) {
     setLevelOne(false);
     if (type == "list") {
       setList(true);
-    }
-    else{
-      setJson(true)
+    } else {
+      setJSON(true);
     }
 
     if (!type) {
@@ -58,12 +57,13 @@ export default function ModalComponent(props) {
     setList(null);
     setData(null);
     setShowTable(false);
+    setJSON(false);
   };
   const handleGenerate = () => {
     generateData();
     setShowTable(true);
     setList(null);
-    setJson(null);
+    setJSON(null);
   };
 
   return (
@@ -76,14 +76,18 @@ export default function ModalComponent(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {!showTable ? (
+          {!showTable && !JSON ? (
             "Personalize your data"
           ) : (
-            <Button onClick={handleRestart} variant="info">
+            <Button
+              className={JSON && "me-3"}
+              onClick={handleRestart}
+              variant="info"
+            >
               Restart
             </Button>
           )}
-          {json && "How to fetch a JSON data ?"}
+          {JSON && "How to fetch a JSON data ?"}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -96,13 +100,12 @@ export default function ModalComponent(props) {
                     <Card.Body>
                       <Card.Title>JSON</Card.Title>
                       <Card.Text>
-                        This will return a JSON data. It requires you to fetch
-                        the data yourself provided that you will be given an end
-                        point.
+                         This will return a JSON data. It requires you to fetch
+                        the data yourself, Provided you will be given an endpoint.
                       </Card.Text>
                       <div className="position-relative my-5"></div>
                       <Button
-                        onClick={() => handleContinue("json")}
+                        onClick={() => handleContinue("JSON")}
                         variant="primary"
                       >
                         Continue
@@ -118,7 +121,7 @@ export default function ModalComponent(props) {
                       <Card.Title>List</Card.Title>
                       <Card.Text>
                         This data will be displayed in a table, each information
-                        will be display per row. The amount of data displayed
+                        will be display in a row. The amount of data displayed
                         depends on your preference.
                       </Card.Text>
                       <div className="position-relative my-4"></div>
@@ -135,18 +138,21 @@ export default function ModalComponent(props) {
               </Col>
             </Row>
           )}
-          {json && (
+          {JSON && (
             <Row>
               <Col>
-                To fetch a JSON data, you'd need to send a GET request to
-                "https://faker-ng.herokuapp.com"
-                <h4>Can i personalize data ?</h4>
+                To fetch a JSON data, you'd need to send a GET request to{" "}
+                <code>https://faker-ng.herokuapp.com/api/faker/nigeria</code>.
+                <h5 className="mt-3">Can Personalize data ?</h5>
                 Yes you can set the number of result you want in a seamless way
                 by passing a query to the end point. e.g
-                "https://faker-ng.herokuapp.com?num=7" This will
-                generate a 7 nigerian data in a json format. Meanwhile, in the
-                next version of this application, we'll support filtering by
-                Name, Email , State and Gender.
+                <code>
+                  {" "}
+                  https://faker-ng.herokuapp.com/api/faker/nigeria?num=7
+                </code>{" "}
+                . This will generate a 7 nigerian data in a JSON format.
+                Meanwhile, in the next version of this application, we'll
+                support filtering by Name, Email , State and Gender.
               </Col>
             </Row>
           )}
@@ -160,6 +166,13 @@ export default function ModalComponent(props) {
                   <option>100</option>
                   <option>200</option>
                   <option>300</option>
+                  <option>400</option>
+                  <option>500</option>
+                  <option>600</option>
+                  <option>700</option>
+                  <option>800</option>
+                  <option>900</option>
+                  <option>1000</option>
                 </Form.Control>
               </Form.Group>
               <div className="oerflow-hidden my-4"></div>
@@ -187,17 +200,21 @@ export default function ModalComponent(props) {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        {(list) && (
+        {list && (
           <Button variant="success" onClick={handleGenerate}>
             Generate
           </Button>
         )}
 
-        {
-          json && <a className="btn btn-success" href="https://faker-ng.herokuapp.com?num=7">
-          Generate
+        {JSON && (
+          <a
+            className="btn btn-success"
+            target="_blank"
+            href="https://faker-ng.herokuapp.com/api/faker/nigeria?num=7"
+          >
+            Try it
           </a>
-        }
+        )}
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>

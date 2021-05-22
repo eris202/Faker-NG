@@ -12,12 +12,30 @@ const yorubaFemale = require("./yoruba/female");
 const yorubaState = require("./yoruba/state");
 const sex = require("./gender");
 
-
 export default (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  if (req.method == "OPTIONS") {
+    res.setHeader("Access-Control-Allow-Credentials", "'true");
+    res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, x-access-token, x-api-token, X-Requested-With, Content-Type, Accept"
+    );
+    res.setHeader("Access-Control-Max-Age", "3800");
+
+    res.status(200).end();
+  }
+
   let end = req.query.num;
-  console.log(end , "end is")
   let gender;
-  var index =0
+  var index = 0;
+  if (end > 1000) {
+    res.status(501).json({
+      message: "The maximum number of data you can generate is 1000",
+    });
+    return;
+  }
 
   if (!req.query.num) {
     res.status(501).json({ message: "num not provided" });
@@ -28,14 +46,14 @@ export default (req, res) => {
     let firstName, lastName, state;
 
     function equation() {
-      index = index + 1
+      index = index + 1;
       const toogleArray = (incomingData) => {
         const length = incomingData.length;
         const randomNum = Math.floor(Math.random() * length);
         const randomPick = incomingData[randomNum];
         return randomPick;
       };
-        gender = toogleArray(sex);
+      gender = toogleArray(sex);
       const grouping = {
         Yoruba: function () {
           state = toogleArray(yorubaState);
@@ -48,7 +66,7 @@ export default (req, res) => {
           }
 
           return {
-            firstName ,
+            firstName,
             lastName,
             location: state + "," + " " + "Nigeria",
             gender,
@@ -65,7 +83,7 @@ export default (req, res) => {
           }
 
           return {
-            firstName ,
+            firstName,
             lastName,
             location: state + "," + " " + "Nigeria",
             gender,
@@ -82,7 +100,7 @@ export default (req, res) => {
           }
 
           return {
-            firstName ,
+            firstName,
             lastName,
             location: state + "," + " " + "Nigeria",
             gender,
@@ -107,6 +125,6 @@ export default (req, res) => {
 
     equation();
   } catch (error) {
-    res.status(501).json({err: error , message: "Something went wrong !!!" });
+    res.status(501).json({ err: error, message: "Something went wrong !!!" });
   }
 };
