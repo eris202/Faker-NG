@@ -56,19 +56,17 @@ export default (req, res) => {
         const randomPick = incomingData[randomNum];
         return randomPick;
       };
-      // you can filter my gender here
+      // you can filter by gender here
       gender = toogleArray(sex);
       const grouping = {
         Yoruba: function () {
           state = toogleArray(yorubaState);
-          if (toogleArray(gender) == "male") {
+          if (gender == "male") {
             firstName = toogleArray(yorubaMale);
             lastName = toogleArray(yorubaMale);
-            gender = "Male"
           } else {
             firstName = toogleArray(yorubaFemale);
             lastName = toogleArray(yorubaFemale);
-            gender = "Female"
           }
 
           return {
@@ -80,14 +78,12 @@ export default (req, res) => {
         },
         Igbo: function () {
           state = toogleArray(igboState);
-          if (toogleArray(gender) == "male") {
+          if (gender == "male") {
             firstName = toogleArray(igboMale);
             lastName = toogleArray(igboMale);
-            gender = "Male"
           } else {
             firstName = toogleArray(igboFemale);
             lastName = toogleArray(igboFemale);
-            gender = "Male"
           }
 
           return {
@@ -99,14 +95,12 @@ export default (req, res) => {
         },
         Hausa: function () {
           state = toogleArray(hausaState);
-          if (toogleArray(gender) == "male") {
+          if (gender == "male") {
             firstName = toogleArray(hausaMale);
             lastName = toogleArray(hausaMale);
-            gender = "Male"
           } else {
             firstName = toogleArray(hausaFemale);
             lastName = toogleArray(hausaFemale);
-            gender = "Female"
           }
 
           return {
