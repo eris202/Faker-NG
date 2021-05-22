@@ -117,7 +117,7 @@ export default (req, res) => {
         course: "Online Course",
         index,
         imageUri:
-          "https://api.backendless.com/2F26DFBF-433C-51CC-FF56-830CEA93BF00/473FB5A9-D20E-8D3E-FF01-E93D9D780A00/files/CountryFlags/nga.svg",
+          "https::/faker-ng.herokuapp.com/images/nigeria.jpeg",
       });
       if (dataArray.length == end) {
         return res.status(200).json(dataArray);
