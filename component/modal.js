@@ -143,7 +143,7 @@ export default function ModalComponent(props) {
               <Col>
                 To fetch a JSON data, you'd need to send a GET request to{" "}
                 <code>https://faker-ng.herokuapp.com/api/faker/nigeria</code>.
-                <h5 className="mt-3">Can i Personalize data ?</h5>
+                <h5 className="mt-3">Can i personalize data ?</h5>
                 Yes you can set the number of result you want in a seamless way
                 by passing a query to the end point. e.g
                 <code>
